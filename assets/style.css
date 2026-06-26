@@ -1,0 +1,132 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+    height: 100vh;
+    margin: 0;
+}
+.area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 80%;
+    height: 80vh;
+}
+.compra {
+    width: 70%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 255, 0.4);
+}
+
+
+
+
+.compra span {
+    display: block; 
+    text-align: left;
+    margin: 20px;
+    font-weight: bold;
+}
+.shop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    height: 100px;
+    border-radius: 10px;
+    background-color: rgba(255, 0, 0, 0.25);
+    margin: 20px;
+    padding: 10px;
+}
+.cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.cont-shop {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    height: 50px;
+}
+.shop-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+   /* background-color: rgba(0, 255, 255, 0.4);*/
+    background-image: url('../img/calça.png');
+    background-position: center;
+    background-size: cover;
+}
+.btnAdd {
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #3A964E;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+
+
+
+
+.cont-car {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+    width: 30%;
+}
+.carrinho {
+    width: 100%;
+    height: 50%;
+    border-radius: 10px;
+    background-color: rgba(0, 255, 0, 0.4);
+}
+.carrinho span {
+    display: block;
+    text-align: left;
+    margin: 20px;
+    font-weight: bold;
+}
+.item-car {
+    height: 30%;
+    width: 90%;
+    margin: auto;
+    border-bottom: 1px solid #000;
+    text-align: center;
+}
+.total {
+    display: flex;
+    justify-content: space-between;
+}
+.btnEnd {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 85px;
+}
+.btnEnd button {
+    background-color: #242843;
+    color: #fff;
+    font-weight: bold;
+    border: 0;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 15px;
+}
