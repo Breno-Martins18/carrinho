@@ -1,9 +1,9 @@
 
 let itensJason = [
-    {id: 1, item: "boné", img: "img/boné.png", price: 22.33},
-    {id: 2, item: "calça", img: "img/calça.png", price: 88.99},
-    {id: 3, item: "camisa", img: "img/camisa.png", price: 66},
-    {id: 4, item: "sapato", img: "img/sapato.png", price: 244.99}
+    {id: 1, item: "boné", img: "img/boné.png", price: 22.33, quantity: 1},
+    {id: 2, item: "calça", img: "img/calça.png", price: 88.99, quantity: 1},
+    {id: 3, item: "camisa", img: "img/camisa.png", price: 66, quantity: 1},
+    {id: 4, item: "sapato", img: "img/sapato.png", price: 244.99, quantity: 1}
 ]
 
 
@@ -23,7 +23,14 @@ itensJason.map((item, index) => {
 
     // FUNÇÃO PARA O BOTÃO ADICIONAR
     itensShop.querySelector('.btnAdd').addEventListener('click', () => {
-        cart.push(item);
+        //cart.push(item);
+        let existente = cart.find(p => p.id === item.id);
+
+        if (existente) {
+            existente.quantity += 1;
+        } else {
+            cart.push({ ...item, quantity: 1 });
+        }
         updatecart();
     });
     
@@ -41,7 +48,7 @@ function updatecart() {
     let total = 0;
     
     for(let produto of cart) {
-        total += produto.price;
+        total += produto.price * produto.quantity;
 
         areaCarrinho.innerHTML += `
             <div class="shop-item-car" style="display:flex">
@@ -52,7 +59,7 @@ function updatecart() {
                 <span>${produto.item}</span>
 
                 <div class="adicionar">
-                    <span>1</span>
+                    <span>${produto.quantity}</span>
                 </div>
             </div>
 
