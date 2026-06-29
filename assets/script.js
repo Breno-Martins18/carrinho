@@ -20,19 +20,45 @@ itensJason.map((item, index) => {
     itensShop.querySelector('.item-price').innerText = `R$ ${item.price.toFixed(2)}`;
 
     
-    
-    
+
     // FUNÇÃO PARA O BOTÃO ADICIONAR
     itensShop.querySelector('.btnAdd').addEventListener('click', () => {
         cart.push(item);
-        c('.item-car').innerHTML = cart.map(i => i.item).join(', ');
+        updatecart();
     });
-
-
-
-
-
     
     c('.compra').append(itensShop);
 })
 c('.shop').remove();
+
+function updatecart() {
+
+    //car.innerHTML = cart.map(i => i.item).join(', ');
+    let areaCarrinho = c('.item-car');
+    areaCarrinho.innerHTML = '';
+    
+    
+    let total = 0;
+    
+    for(let produto of cart) {
+        total += produto.price;
+
+        areaCarrinho.innerHTML += `
+            <div class="shop-item-car" style="display:flex">
+                <div
+                    class="shop-img-car" style="background-image:url('${produto.img}')">
+                </div>
+
+                <span>${produto.item}</span>
+
+                <div class="adicionar">
+                    <span>1</span>
+                </div>
+            </div>
+
+        `;
+        
+        c('#total-price').innerText = `${total.toFixed(2)}`
+    };
+
+}
