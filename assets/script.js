@@ -23,7 +23,6 @@ itensJason.map((item, index) => {
 
     // FUNÇÃO PARA O BOTÃO ADICIONAR
     itensShop.querySelector('.btnAdd').addEventListener('click', () => {
-        //cart.push(item);
         let existente = cart.find(p => p.id === item.id);
 
         if (existente) {
@@ -39,8 +38,6 @@ itensJason.map((item, index) => {
 c('.shop').remove();
 
 function updatecart() {
-
-    //car.innerHTML = cart.map(i => i.item).join(', ');
     let areaCarrinho = c('.item-car');
     areaCarrinho.innerHTML = '';
     
@@ -51,7 +48,7 @@ function updatecart() {
         total += produto.price * produto.quantity;
 
         areaCarrinho.innerHTML += `
-            <div class="shop-item-car" style="display:flex">
+            <div class="shop-item-car" data-key="${cart.indexOf(produto)}" style="display:flex">
                 <div
                     class="shop-img-car" style="background-image:url('${produto.img}')">
                 </div>
@@ -59,7 +56,7 @@ function updatecart() {
                 <span>${produto.item}</span>
 
                 <div class="adicionar">
-                    <span>${produto.quantity}</span>
+                    <span class="menos">-</span>${produto.quantity}<span class="mais" style="margin-top: 2px">+</span>
                 </div>
             </div>
 
@@ -67,5 +64,25 @@ function updatecart() {
         
         c('#total-price').innerText = `${total.toFixed(2)}`
     };
-
 }
+
+c('.item-car').addEventListener('click', (e) => {
+    if (e.target.closest('.mais')) {
+        let key = e.target.closest('.shop-item-car').getAttribute('data-key');
+        cart[key].quantity += 1;
+        updatecart();
+    }
+
+    if (e.target.closest('.menos')) {
+        let key = e.target.closest('.shop-item-car').getAttribute('data-key');
+        if (cart[key].quantity > 1) {
+            cart[key].quantity -= 1;
+        } else {
+            cart.splice(key, 1);
+            c('#total-price').innerText = 'R$ 00.00';
+        }
+        updatecart();
+    }   
+
+    
+});
